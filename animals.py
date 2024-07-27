@@ -18,7 +18,7 @@ class Animal:
 class Bird(Animal):
     def __init__(self, name, wingspan):
         super().__init__(name)
-        self.wingspan = wingspan
+        self.wingspan = wingspan / 2
 
     def compare(self):
         return self.wingspan
@@ -64,12 +64,11 @@ class AnimalFactory:
         raise ValueError(f"Недопустимый тип животного: {animal_type}")
 
 
-
 def main():
     """ Функция для запуска приложения с командной строки"""
 
     parser = argparse.ArgumentParser(description='Программа для  создания и описания животных')
-    parser.add_argument('animal_type', choices=['Bird', 'Fish', 'Mammal'], help='Тип животного')
+    parser.add_argument('animal_type', help='Тип животного Bird ,Fish,  Mammal')
     parser.add_argument('name', type=str, help='Название животного')
     parser.add_argument("parameter", type=int, help="Характеристика для животного (wing span, depth, or weight)")
     args = parser.parse_args()
@@ -90,11 +89,4 @@ def main():
 if __name__ == '__main__':
     main()
 
-# animal1 = AnimalFactory.create_animal('Bird', 'Орел', 200)
-# animal2 = AnimalFactory.create_animal('Fish', 'Лосось', 50)
-# animal3 = AnimalFactory.create_animal('Mammal', 'Слон', 5000)
-#
-# # Вывод результатов
-# print(animal1.wing_length())
-# print(animal2.depth())
-# print(animal3.category())
+
